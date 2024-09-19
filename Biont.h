@@ -5,13 +5,13 @@
 namespace game {
 	class Biont {
 	public:
-		Biont(double _x,double _y,unsigned int _width,unsigned int _heigth, const std::wstring& _filepath,
-			double _speed,double _landSpeed,double _jumpSpeed,double _health);
+		Biont(double _x,double _y,unsigned int _width,unsigned int _height, const std::wstring& _filepath,
+			double _speed,double _takeOffSoeed,double _gravity,double _health);
 		void moveLeft() { x -= speed, updateImageIconXY();}
 		void moveRight() { x += speed,updateImageIconXY();}
+		void updateStatus(std::vector<Wall> walls);
+		void midiarMove();
 		void jump();
-		void land();
-		void updete(std::vector<Wall>&);
 		efc::ImageIcon& getImageIcon() { return imageIcon; }
 	private:
 		double x;
@@ -19,13 +19,15 @@ namespace game {
 		unsigned int width;
 		unsigned int height;
 		efc::ImageIcon imageIcon;
-		double speed;
-		double landSpeed;
-		double jumpSpeed;
-		double currentJumpSpeed = 0;
-		double gravity = 0.1;
-		bool isJumping;
-		double health;
+
+		double speed;			// 水平移动速率
+		double takeOffSoeed;	// 起跳速度（向上为正方向）
+		double nowMidiarSpeed;	// 当前在空中的速度（向上为正方向） 
+		double gravity;	// 重力加速度（每帧的竖直方向速度变化）
+		bool inMidiar;			// 现在是否在空中
+
+		double health;		
+		
 		void updateImageIconXY() { imageIcon.setX(x), imageIcon.setY(y); }
 	};
 }

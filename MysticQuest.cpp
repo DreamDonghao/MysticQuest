@@ -18,9 +18,10 @@ int main() {
         if (startGame.isLeftClick()) {
             efc::Timer timer;
             efc::Screen gameScreen(window, message);
-            game::Player player(0, 0, 100, 100, 10, 10, 10, 10, L"src\\GameScreen\\player.jpg");
+            game::Player player(0, 0, 100, 100, L"src\\GameScreen\\playr.jpg",10,10,0.1,10);
             std::vector<game::Wall> walls;
             walls.emplace_back(200, 700, 800, 50,L" ");
+            walls.emplace_back(600, 400, 400, 10, L" ");
             gameScreen.AddElement(&player.getImageIcon());
             for (auto &wall : walls) {
                 gameScreen.AddElement(&wall.getImageIcon());
@@ -39,8 +40,8 @@ int main() {
                 if (message.isSpaceKeyDown()) {
                     player.jump();
                 }
-                player.updete(walls);
-                player.land();
+                player.updateStatus(walls);
+                player.midiarMove();
                 std::this_thread::sleep_for(std::chrono::milliseconds(10));  // ¿ØÖÆÖ¡ÂÊ
             }
         } else if (settings.isLeftClick()) {

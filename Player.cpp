@@ -1,7 +1,7 @@
 #include "Player.h"
 namespace game {
-	Player::Player(double x, double y, unsigned int width, unsigned int heigth,
-		double speed, double landSpeed, double jumpSpeed, double health, const std::wstring& filepath)
-		:Biont(x, y, width, heigth, filepath, speed, landSpeed, jumpSpeed, health) {
+	Player::Player(double x, double y, unsigned int width, unsigned int height, const std::wstring& filepath,
+		double speed, double takeOffSoeed, double gravity, double health)
+		:Biont(x, y, width, height, filepath, speed, takeOffSoeed, gravity, health) {
 	}
 }

@@ -3,8 +3,8 @@
 namespace game {
     class Player :public Biont {
     public:
-        Player(double x, double y, unsigned int width, unsigned int heigth,
-            double speed,double landSpeed,double jumpSpeed, double health , const std::wstring& _filepath);
+        Player(double _x, double _y, unsigned int _width, unsigned int _height, const std::wstring& _filepath,
+            double _speed, double _takeOffSoeed, double _gravity, double _health);
     private:
 
     };
