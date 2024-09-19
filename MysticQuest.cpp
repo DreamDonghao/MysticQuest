@@ -20,8 +20,11 @@ int main() {
             efc::Screen gameScreen(window, message);
             game::Player player(0, 0, 100, 100, 10, 10, 10, 10, L"src\\GameScreen\\player.jpg");
             std::vector<game::Wall> walls;
-            walls.emplace_back(0, 800, 1200, 400);
+            walls.emplace_back(200, 700, 800, 50,L" ");
             gameScreen.AddElement(&player.getImageIcon());
+            for (auto &wall : walls) {
+                gameScreen.AddElement(&wall.getImageIcon());
+            }
 
             while (true) {
                 timer.reset();
